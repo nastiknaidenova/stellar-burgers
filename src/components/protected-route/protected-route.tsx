@@ -16,13 +16,12 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   const location = useLocation();
 
   if (!isAuthChecked) {
-    if (!requiresAuth) {
+    if (!requiresAuth && !isAuthChecked) {
       return <Navigate replace to='/login' state={{ from: location }} />;
     }
-    return null;
   }
 
-  if (requiresAuth) {
+  if (requiresAuth && isAuthChecked) {
     const redirectTo = location.state?.from || { pathname: '/' };
     return <Navigate replace to={redirectTo} />;
   }
