@@ -15,10 +15,8 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   const isAuthChecked = useSelector(selectIsAuthChecked);
   const location = useLocation();
 
-  if (!isAuthChecked) {
-    if (!requiresAuth && !isAuthChecked) {
-      return <Navigate replace to='/login' state={{ from: location }} />;
-    }
+  if (!requiresAuth && !isAuthChecked) {
+    return <Navigate replace to='/login' state={{ from: location }} />;
   }
 
   if (requiresAuth && isAuthChecked) {
