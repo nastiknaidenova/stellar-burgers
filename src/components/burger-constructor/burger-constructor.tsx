@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import {
-  resetConstructor,
-  constructorSelector
+  constructorSelector,
+  resetConstructor
 } from '../../services/slices/constructor';
 import {
   createOrder,
