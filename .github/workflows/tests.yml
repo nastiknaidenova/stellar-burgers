@@ -24,6 +24,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Write the cypress.env.json file
+        run: |
+          echo '${{ secrets.BURGER_API_URL }}' > cypress.env.json
+
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
