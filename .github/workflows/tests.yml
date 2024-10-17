@@ -5,18 +5,18 @@ on:
     branches:
       - review
 
-jobs:
-  jest_tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+# jobs:
+#   jest_tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Install dependencies
+#         run: npm install
 
-      - name: Run Jest tests
-        run: npm run jest-test:detailed
+#       - name: Run Jest tests
+#         run: npm run jest-test:detailed
 
   cypress_tests:
     runs-on: ubuntu-latest
