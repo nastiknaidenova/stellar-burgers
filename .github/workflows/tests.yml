@@ -24,15 +24,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Start application
-        run: npm start &
-
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
+          build: npm i
+          start: npm start
           browser: chrome
 
       - name: Upload screenshots
