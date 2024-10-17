@@ -1,7 +1,7 @@
 describe('E2E тесты для главной страницы и модального окна', function () {
   beforeEach(() => {
-    cy.intercept('GET', '/api/ingredients', { fixture: 'ingredients.json' });
     cy.intercept('GET', '/api/auth/user', { fixture: 'user.json' });
+    cy.intercept('GET', '/api/ingredients', { fixture: 'ingredients.json' });
     cy.visit('http://localhost:4000');
   });
 
