@@ -36,6 +36,9 @@ jobs:
       - name: Run Cypress tests
         run: npm run cypress-test:run
 
+      - name: List Screenshots
+        run: ls cypress/screenshots
+
       - name: Upload Screenshots
         uses: actions/upload-artifact@v4
         with:
