@@ -26,6 +26,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        env:
+          BURGER_API_URL: ${{ secrets.BURGER_API_URL }}
 
       - name: Start application
         run: npm start &
