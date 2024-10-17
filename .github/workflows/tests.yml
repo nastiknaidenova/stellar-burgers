@@ -30,8 +30,8 @@ jobs:
           browser: chrome
           build: npm install
           start: npm start
-        env:
-          BURGER_API_URL: ${{ secrets.BURGER_API_URL }}
+          env:
+            BURGER_API_URL: ${{ secrets.BURGER_API_URL }}
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
