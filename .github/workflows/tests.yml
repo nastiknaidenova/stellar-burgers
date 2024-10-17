@@ -29,14 +29,40 @@ jobs:
           while ! nc -z localhost 4000; do   
             sleep 1
           done 
-  
-  run jest tests:
+
+  jest_tests:
+    runs-on: ubuntu-latest
+    needs: build
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Run Jest tests
         run: npm run jest-test:detailed
 
-  run cypress tests:
+  cypress_tests:
+    runs-on: ubuntu-latest
+    needs: build
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Run Cypress tests
         run: npm run cypress-test:run
 
