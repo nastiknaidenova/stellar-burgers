@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        env:
+          BURGER_API_URL: ${{ secrets.BURGER_API_URL }}
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
@@ -30,8 +32,6 @@ jobs:
           browser: chrome
           build: npm install
           start: npm start
-        env:
-          BURGER_API_URL: ${{ secrets.BURGER_API_URL }}
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
