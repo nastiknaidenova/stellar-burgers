@@ -27,6 +27,9 @@ jobs:
       - name: Set up environment variables
         run: echo "BURGER_API_URL=${{ secrets.BURGER_API_URL }}" >> $GITHUB_ENV
 
+      - name: Проверка переменных окружения
+        run: echo "BURGER_API_URL=$BURGER_API_URL"
+
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
