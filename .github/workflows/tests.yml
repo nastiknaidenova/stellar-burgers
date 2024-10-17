@@ -12,11 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
       - name: Install dependencies
         run: npm install
 
@@ -29,13 +24,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
+          browser: chrome
           build: npm install
           start: npm start
