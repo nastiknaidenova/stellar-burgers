@@ -21,6 +21,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Start server
+        run: npm run start &
+
+      - name: Wait for server to be ready
+        run: |
+          while ! nc -z localhost 4000; do   
+            sleep 1
+          done 
+
       - name: Run Jest tests
         run: npm run jest-test:detailed
 
