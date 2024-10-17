@@ -24,9 +24,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up environment variables
-        run: echo "BURGER_API_URL=${{ secrets.BURGER_API_URL }}" >> $GITHUB_ENV
-
       - name: Install dependencies
         run: npm install
 
@@ -36,6 +33,7 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
+          baseUrl: ${{ secrets.BURGER_API_URL }}
           browser: chrome
 
       - name: Upload screenshots
