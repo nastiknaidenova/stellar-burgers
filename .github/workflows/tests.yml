@@ -29,10 +29,14 @@ jobs:
           while ! nc -z localhost 4000; do   
             sleep 1
           done 
-
+  
+  run jest tests:
+    steps:
       - name: Run Jest tests
         run: npm run jest-test:detailed
 
+  run cypress tests:
+    steps:
       - name: Run Cypress tests
         run: npm run cypress-test:run
 
