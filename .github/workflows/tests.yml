@@ -34,8 +34,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-        env: 
-          BURGER_API_URL: ${{ secrets.BURGER_API_URL }}
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
