@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from '../store';
 
-describe('Тестируем инициализацию rootReducer', () => {
-  test('Тесты начального состояния rootReducer', () => {
+describe('Тестирование инициализации корневого редьюсера - rootReducer', () => {
+  test('Должно возвращаться начальное состояние rootReducer', () => {
     const store = configureStore({ reducer: rootReducer });
     const initialState = rootReducer(undefined, { type: '@@INIT' });
 

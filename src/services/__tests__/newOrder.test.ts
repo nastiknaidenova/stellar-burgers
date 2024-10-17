@@ -3,7 +3,7 @@ import {
   mockOrderData,
   mockOrderReceivedData
 } from '../testData/newOrder.testData';
-import newOrderReduser, {
+import newOrderReducer, {
   initialState,
   selectOrderData,
   selectIsLoading,
@@ -11,52 +11,71 @@ import newOrderReduser, {
   resetOrderState
 } from '../slices/newOrder';
 
-describe('Тестируем newOrderSlice', () => {
-  test('Тесты селекторов', () => {
-    const store = configureStore({
-      reducer: {
-        newOrder: newOrderReduser
-      },
-      preloadedState: {
-        newOrder: mockOrderData
-      }
+describe('Тестирование состояний и действий с заказом - newOrderSlice', () => {
+  describe('Селекторы', () => {
+    test('Должен возвращать статус загрузки заказа через селектор selectIsLoading', () => {
+      const store = configureStore({
+        reducer: {
+          newOrder: newOrderReducer
+        },
+        preloadedState: {
+          newOrder: mockOrderData
+        }
+      });
+      const orderRequest = selectIsLoading(store.getState());
+      expect(orderRequest).toEqual(mockOrderData.isLoading);
     });
-    const orderRequest = selectIsLoading(store.getState());
-    const modal = selectOrderData(store.getState());
 
-    expect(orderRequest).toEqual(mockOrderData.isLoading);
-    expect(modal).toEqual(mockOrderData.orderData);
+    test('Должен возвращать данные заказа через селектор selectOrderData', () => {
+      const store = configureStore({
+        reducer: {
+          newOrder: newOrderReducer
+        },
+        preloadedState: {
+          newOrder: mockOrderData
+        }
+      });
+      const modal = selectOrderData(store.getState());
+      expect(modal).toEqual(mockOrderData.orderData);
+    });
   });
 
-  test('Тесты редьюсера resetOrder', () => {
-    const state = {
-      isLoading: true,
-      orderData: mockOrderReceivedData.order,
-      errorMessage: 'undefined'
-    };
-    const stateReceived = newOrderReduser(state, resetOrderState());
-    expect(stateReceived).toEqual(initialState);
+  describe('Сброс состояния заказа', () => {
+    test('Должен сбрасывать состояние заказа через action resetOrderState', () => {
+      const state = {
+        isLoading: true,
+        orderData: mockOrderReceivedData.order,
+        errorMessage: 'undefined'
+      };
+      const stateReceived = newOrderReducer(state, resetOrderState());
+      expect(stateReceived).toEqual(initialState);
+    });
   });
 
-  test('Тесты редьюсера placeNewOrder: pending', () => {
-    const newState = newOrderReduser(initialState, createOrder.pending('', []));
-    expect(newState.isLoading).toBe(true);
-  });
+  describe('Создание нового заказа', () => {
+    test('Должен устанавливать статус загрузки в true при создании заказа: pending', () => {
+      const newState = newOrderReducer(
+        initialState,
+        createOrder.pending('', [])
+      );
+      expect(newState.isLoading).toBe(true);
+    });
 
-  test('Тесты редьюсера placeNewOrder: fulfilled', () => {
-    const newState = newOrderReduser(
-      initialState,
-      createOrder.fulfilled(mockOrderReceivedData, '', [''])
-    );
-    expect(newState.isLoading).toBe(false);
-    expect(newState.orderData).toEqual(mockOrderReceivedData.order);
-  });
+    test('Должен обновлять данные заказа и статус загрузки после успешного создания заказа: fulfilled', () => {
+      const newState = newOrderReducer(
+        initialState,
+        createOrder.fulfilled(mockOrderReceivedData, '', [''])
+      );
+      expect(newState.isLoading).toBe(false);
+      expect(newState.orderData).toEqual(mockOrderReceivedData.order);
+    });
 
-  test('Тесты редьюсера placeNewOrder: rejected', () => {
-    const newState = newOrderReduser(
-      initialState,
-      createOrder.rejected(new Error('error'), 'тестовая ошибка', [''])
-    );
-    expect(newState.errorMessage).toEqual('error');
+    test('Должен устанавливать сообщение об ошибке при неудачном создании заказа: rejected', () => {
+      const newState = newOrderReducer(
+        initialState,
+        createOrder.rejected(new Error('error'), 'тестовая ошибка', [''])
+      );
+      expect(newState.errorMessage).toEqual('error');
+    });
   });
 });
