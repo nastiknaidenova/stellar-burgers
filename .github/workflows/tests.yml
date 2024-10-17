@@ -5,7 +5,7 @@ on:
     branches:
       - review
 
-# jobs:
+jobs:
 #   jest_tests:
 #     runs-on: ubuntu-latest
 #     steps:
