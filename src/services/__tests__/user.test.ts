@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { describe, expect, test } from '@jest/globals';
 import {
   mockUserData,
   mockUserDataUpdated,

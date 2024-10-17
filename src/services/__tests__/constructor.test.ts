@@ -20,7 +20,7 @@ import {
   nonBunIngredientsWithoutIdReplace1To2,
   nonBunIngredientsWithoutIdReplace1To0
 } from '../testData/constructor.testData';
-import { TConstructorIngredient, TIngredient } from '@utils-types';
+import { TConstructorIngredient } from '@utils-types';
 
 const removeId = (obj: TConstructorIngredient) =>
   (({ id, ...params }) => params)(obj);

@@ -1,4 +1,3 @@
-import { expect, test } from '@jest/globals';
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from '../store';
 
