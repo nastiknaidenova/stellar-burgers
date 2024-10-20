@@ -37,10 +37,10 @@ const App: FC = () => {
   return (
     <div className={styles.app}>
       <Helmet>
-        <title>StellarBurger - Космическая бургерная</title>
+        <title>Stellar Burgers - Космическая бургерная</title>
         <meta
           name='description'
-          content='Добро пожаловать в StellarBurger, космическую бургерную!'
+          content='Добро пожаловать в Stellar Burgers, космическую бургерную!'
         />
       </Helmet>
       <AppHeader />

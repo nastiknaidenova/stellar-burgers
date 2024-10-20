@@ -54,9 +54,6 @@ const constructorSlice = createSlice({
     ) => {
       state.ingredients = action.payload;
     }
-  },
-  selectors: {
-    selectConstructorState: (state: TConstructorState) => state
   }
 });
 
@@ -68,6 +65,8 @@ export const {
   setIngredients
 } = constructorSlice.actions;
 
-export const constructorSelector = constructorSlice.selectors;
+export const selectConstructorState = (state: {
+  constructorIngredient: TConstructorState;
+}) => state.constructorIngredient;
 
 export default constructorSlice.reducer;

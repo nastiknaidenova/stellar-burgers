@@ -6,7 +6,7 @@ import constructorReducer, {
   resetConstructor,
   setIngredients,
   replaceIngredients,
-  constructorSelector
+  selectConstructorState
 } from '../slices/constructor';
 import {
   ingredientsWithDeleted,
@@ -37,8 +37,7 @@ describe('Тестирование конструктора бургера - Con
           ingredients: allNonBunIngredientsWithId
         }
       };
-      const receivedState =
-        constructorSelector.selectConstructorState(newState);
+      const receivedState = selectConstructorState(newState);
       expect(receivedState).toEqual(newState.constructorIngredient);
     });
   });
