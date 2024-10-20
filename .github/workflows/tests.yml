@@ -26,7 +26,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "BURGER_API_URL: ${{ secrets.BURGER_API_URL }}" >> .env
+          echo "BURGER_API_URL=${{ secrets.BURGER_API_URL }}" >> .env
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
