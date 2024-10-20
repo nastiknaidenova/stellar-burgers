@@ -24,10 +24,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Create .env file
+        run: |
+          echo "BURGER_API_URL: ${{ secrets.BURGER_API_URL }}" >> .env
+
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
-        env:
-          BURGER_API_URL: ${{ secrets.BURGER_API_URL }}
         with:
           build: npm i
           start: npm start
