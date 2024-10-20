@@ -12,7 +12,7 @@ describe('E2E тесты для главной страницы и модаль�
 
   it('Добавление ингредиентов в конструктор', function () {
     // Определяем элементы
-    cy.get(`[data-cy=${'buns'}]`).as('buns');
+    cy.get('[data-cy=buns]').as('buns');
     cy.get('[data-cy=mains]').as('mains');
     cy.get('[data-cy=sauces]').as('sauces');
 
@@ -90,7 +90,7 @@ describe('E2E тесты оформления заказа', function () {
 
   it('Тестирование оформления заказа', function () {
     // Определяем элементы
-    cy.get(`[data-cy=${'buns'}]`).as('buns');
+    cy.get('[data-cy=buns]').as('buns');
     cy.get('[data-cy=mains]').as('mains');
     cy.get('[data-cy=sauces]').as('sauces');
 
