@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useDispatch } from '../../services/store';
 import { fetchIngredients } from '../../services/slices/ingredients';
 import { fetchUser } from '../../services/slices/user';
@@ -35,6 +36,13 @@ const App: FC = () => {
 
   return (
     <div className={styles.app}>
+      <Helmet>
+        <title>Stellar Burgers - Космическая бургерная</title>
+        <meta
+          name='description'
+          content='Добро пожаловать в Stellar Burgers, космическую бургерную!'
+        />
+      </Helmet>
       <AppHeader />
       <Routes location={modalBackground || location}>
         <Route path='/' element={<ConstructorPage />} />

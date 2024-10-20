@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import {
-  resetConstructor,
-  constructorSelector
+  selectConstructorState,
+  resetConstructor
 } from '../../services/slices/constructor';
 import {
   createOrder,
@@ -20,9 +20,7 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
 
   const isAuthenticated = useSelector(selectIsAuthChecked);
-  const constructorItems = useSelector(
-    constructorSelector.selectConstructorState
-  );
+  const constructorItems = useSelector(selectConstructorState);
   const orderRequest = useSelector(selectIsLoading);
   const orderModalData = useSelector(selectOrderData);
 

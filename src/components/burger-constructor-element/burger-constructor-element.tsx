@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from '../../services/store';
 import { BurgerConstructorElementUI } from '@ui';
 import { BurgerConstructorElementProps } from './type';
 import {
-  constructorSelector,
+  selectConstructorState,
   removeIngredient,
   setIngredients
 } from '../../services/slices/constructor';
@@ -12,9 +12,7 @@ import { TConstructorIngredient } from '@utils-types';
 export const BurgerConstructorElement: FC<BurgerConstructorElementProps> = memo(
   ({ ingredient, index, totalItems }) => {
     const dispatch = useDispatch();
-    const itemsInConstructor = useSelector(
-      constructorSelector.selectConstructorState
-    );
+    const itemsInConstructor = useSelector(selectConstructorState);
 
     const rearrangeIngredients = (
       ingredients: TConstructorIngredient[],

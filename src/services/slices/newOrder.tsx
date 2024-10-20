@@ -13,7 +13,7 @@ export interface TNewOrderState {
   errorMessage: string | undefined;
 }
 
-const initialState: TNewOrderState = {
+export const initialState: TNewOrderState = {
   isLoading: false,
   orderData: null,
   errorMessage: undefined
@@ -23,7 +23,7 @@ const newOrderSlice = createSlice({
   name: 'newOrder',
   initialState,
   reducers: {
-    resetOrderState: (state) => initialState
+    resetOrderState: () => initialState
   },
   extraReducers: (builder) => {
     builder
@@ -47,7 +47,11 @@ export const selectIsLoading = (state: { newOrder: TNewOrderState }) =>
   state.newOrder.isLoading;
 export const selectOrderData = (state: { newOrder: TNewOrderState }) =>
   state.newOrder.orderData;
-export const selectErrorMessage = (state: { newOrder: TNewOrderState }) =>
-  state.newOrder.errorMessage;
+// export const selectOrderRequest = (state: { newOrder: TNewOrderState }) =>
+//   state.newOrder.orderRequest;
+// export const selectOrderModalData = (state: { newOrder: TNewOrderState }) =>
+//   state.newOrder.orderModalData;
+// export const selectErrorMessage = (state: { newOrder: TNewOrderState }) =>
+//   state.newOrder.errorMessage;
 
 export default newOrderSlice.reducer;
